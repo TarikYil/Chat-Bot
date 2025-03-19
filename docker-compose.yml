@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile 
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    networks:
+      - chatbot_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile  
+    ports:
+      - "8509:8509"
+    volumes:
+      - .:/app
+    depends_on:
+      - api 
+    networks:
+      - chatbot_network
+    command: streamlit run frontend/app.py --server.port 8509 --server.address 0.0.0.0
+
+networks:
+  chatbot_network:
+    driver: bridge
+
