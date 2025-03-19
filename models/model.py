@@ -12,7 +12,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 def ask_llm(question, context_docs, model="gemini-1.5-pro"):
     if model not in AVAILABLE_MODELS:
-        return "Seçilen model desteklenmiyor!"
+        return “The chosen model is not supported!”
 
     context = "\n".join(context_docs)
     prompt = f"Answer this question based on the context:\n\n{context}\n\nQuestion: {question}\nAnswer:"
