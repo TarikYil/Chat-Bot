@@ -15,7 +15,7 @@ def ask_llm(question, context_docs, model="gemini-1.5-pro"):
         return "Seçilen model desteklenmiyor!"
 
     context = "\n".join(context_docs)
-    prompt = f"Kontekste göre bu soruya yanıt ver:\n\n{context}\n\nSoru: {question}\nYanıt:"
+    prompt = f"Answer this question based on the context:\n\n{context}\n\nQuestion: {question}\nAnswer:"
 
     gen_model = genai.GenerativeModel(model)
     response = gen_model.generate_content(prompt)
