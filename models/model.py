@@ -20,5 +20,5 @@ def ask_llm(question, context_docs, model="gemini-1.5-pro"):
     gen_model = genai.GenerativeModel(model)
     response = gen_model.generate_content(prompt)
 
-    return response.text if response else "Üzgünüm, bir hata oluştu."
+    return response.text if response else “Sorry, there's been an error.”
 
